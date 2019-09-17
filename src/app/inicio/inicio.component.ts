@@ -19,11 +19,9 @@ export class InicioComponent implements OnInit {
     public now: Date = new Date();
     date;
     inicioModel: InicioFaces[];
-    portadaModal: InicioFaces[];    
 
 
-
-   publicidad =
+    publicidad =
         [
             {
                 titulo: 'VENTA DE HELADOS',
@@ -58,8 +56,8 @@ export class InicioComponent implements OnInit {
 
     listarExtenciones2() {
         this.inicioService.listarExtenciones().subscribe((data: any) => {
-                this.inicioModel = data.obj.areas;
-        console.log("inicioModel",this.inicioModel);
+            console.log('dataaaaaa: ', data);
+                this.inicioModel = data.obj.listarExtensiones;
                 return;
             },
             (error) => {
@@ -67,22 +65,10 @@ export class InicioComponent implements OnInit {
                 console.log("imprimir", error);
             });
     }
-
-    listarPortada() {
-        this.inicioService.mostrarPortada().subscribe((data: any) => {
-                this.portadaModal = data.obj.mostrarPortada;
-                console.log("portadaModal",this.portadaModal);
-                return;
-            },
-            (error) => {
-                alert('Ocurrio un Error');
-                console.log("imprimir", error);
-            });
-    }
-
 
 
     tmrColombia() {
+        console.log("******************************tmrColombia***************************************");
         this.inicioService.tmrColombiaService().subscribe((data: any) => {
                 this.precioDolar = data.obj.dolar.value;
                 this.temp = data.obj.main.temp;
@@ -97,9 +83,12 @@ export class InicioComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.listarPortada();
         this.tmrColombia();
         this.listarExtenciones2();
+        console.log('Eyyy');
+        console.log('this.inicioModel: ', this.inicioModel);
+
+
     }
 
 

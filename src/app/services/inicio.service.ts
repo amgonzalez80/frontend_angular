@@ -19,10 +19,6 @@ export class InicioService {
     API_ENDPOINT = "http://localhost:3001/api";
     url_extenciones = this.API_ENDPOINT + '/listarExtensiones';
 
-
-   
-
-
     constructor(private httpClient: HttpClient) {
     }
 
@@ -32,12 +28,8 @@ export class InicioService {
     }
 
     public listarExtenciones() {
+        console.log('url_Extenciones: ', this.url_extenciones);
         return this.httpClient.get(this.url_extenciones);
     }
-
-    
-    public mostrarPortada() {
-        return this.httpClient.get(this.API_ENDPOINT + '/mostrarPortada', this.httpOptions);
-    }
-
+>>>>>>> 7e49790801562936e2d6b1881ded98607037e4f4
 } 
